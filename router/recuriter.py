@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from database.database import get_db
-import schemas
+import pydantic_schema.schemas as schemas
 from database.models import Job, Recuriter,Apply
 from sqlalchemy.orm import Session
 import security.hashing as hashing

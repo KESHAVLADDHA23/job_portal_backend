@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from database.database import get_db
-import schemas
+import pydantic_schema.schemas as schemas
 from database.models import Job, Apply, Seeker
 from sqlalchemy.orm import Session
 import json
