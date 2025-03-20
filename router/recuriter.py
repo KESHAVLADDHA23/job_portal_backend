@@ -63,34 +63,23 @@ def create_job(request: schemas.JobBase, recruiter_id: int, db: Session = Depend
     db.refresh(db_job)
     return db_job
 
-@router.delete("/jobs/delete_job", dependencies=[Depends(get_current_recruiter)])
-def delete_job(id: int, db: Session = Depends(get_db), current_user: dict = Depends(get_current_recruiter)):
+@router.delete("/jobs/delete_job",dependencies=[Depends(get_current_recruiter)])
+def delete_job(id: int, db: Session = Depends(get_db)):
     db_job = db.query(Job).filter(Job.id == id).first()
     if not db_job:
-        raise HTTPException(status_code=404, detail="Job not found")
-
-    # Check if the current recruiter is the creator of the job using email
-    if db_job.email != current_user["email"]:  # Compare recruiter email
-        raise HTTPException(status_code=403, detail="Not authorized to delete this job")
-
+        raise HTTPException(status_code=404, detail="Not found")
+    
     db.delete(db_job)
     db.commit()
     return {"message": "Deleted successfully"}
 
-
-
 # Update Job
-@router.put("/jobs/update_job", dependencies=[Depends(get_current_recruiter)])
-def update_job(id: int, request: schemas.JobBase, db: Session = Depends(get_db), current_user: dict = Depends(get_current_recruiter)):
+@router.put("/jobs/update_job")
+def update_job(id: int, request: schemas.JobBase, db: Session = Depends(get_db)):
     db_job = db.query(Job).filter(Job.id == id).first()
-
     if not db_job:
-        raise HTTPException(status_code=404, detail="Job not found")
-
-    # Check if the current recruiter is the creator of the job
-    if db_job.recruiter_id != current_user["email"]:
-        raise HTTPException(status_code=403, detail="Not authorized to update this job")
-
+        raise HTTPException(status_code=404, detail="Not found")
+    
     for key, value in request.model_dump().items():
         setattr(db_job, key, value)
     
