@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
-from database import get_db
+from database.database import get_db
 import schemas
-from models import Job, Recuriter,Apply
+from database.models import Job, Recuriter,Apply
 from sqlalchemy.orm import Session
-import hashing
+import security.hashing as hashing
 from security.oauth2 import get_current_user,get_current_recruiter
 
 router = APIRouter(

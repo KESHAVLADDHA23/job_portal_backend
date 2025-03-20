@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from database import SessionLocal,engine,Base
-import models
+from database.database import SessionLocal,engine,Base
+import database.models as models
 from router import recuriter,seeker,authentication
 app=FastAPI()
 

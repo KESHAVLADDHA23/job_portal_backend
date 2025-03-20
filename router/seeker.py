@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
-from database import get_db
+from database.database import get_db
 import schemas
-from models import Job, Apply, Seeker
+from database.models import Job, Apply, Seeker
 from sqlalchemy.orm import Session
 import json
 import os
-import hashing
+import security.hashing as hashing
 from security.oauth2 import get_current_seeker,get_current_user
 
 
