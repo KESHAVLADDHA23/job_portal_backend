@@ -1,1 +1,27 @@
-__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+
+# Database file (if using SQLite)
+job_portal.db
+
+# Environment variables
+.env
+*.env
+
+# Logs and Debugging files
+*.log
+logs/
+
+# VS Code and PyCharm settings (optional)
+.vscode/
+.idea/
+
+# macOS and Windows system files
+.DS_Store
+Thumbs.db
+uploads
