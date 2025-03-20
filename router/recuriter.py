@@ -4,7 +4,7 @@ import schemas
 from models import Job, Recuriter,Apply
 from sqlalchemy.orm import Session
 import hashing
-from oauth2 import get_current_user,get_current_recruiter
+from security.oauth2 import get_current_user,get_current_recruiter
 
 router = APIRouter(
     prefix="/recuriter",

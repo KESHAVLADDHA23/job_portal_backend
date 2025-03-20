@@ -4,7 +4,7 @@ from database import get_db
 from schemas import Login
 from models import Seeker,Recuriter
 from hashing import Hash
-import tokens
+import security.tokens as tokens
 from fastapi.security import OAuth2PasswordRequestForm
 
 router=APIRouter(

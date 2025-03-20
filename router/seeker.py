@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 import json
 import os
 import hashing
-from oauth2 import get_current_seeker,get_current_user
+from security.oauth2 import get_current_seeker,get_current_user
 
 
 router = APIRouter(
